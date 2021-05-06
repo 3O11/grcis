@@ -15,8 +15,9 @@ namespace Scene3D
     public static void InitParams (out string name, out string param, out string tooltip)
     {
       name = "Viktor Soukup";
-      param = "none";
-      tooltip = "No parameters implemented yet.";
+      param = "xfreq=5.0,yfreq=2.0,zfreq=3.0,sampleCount=200";
+      tooltip = "{x,y,z}freq - These parameters control how fast the function oscillates with respect to their axes. (Any valid float number)\n" +
+        "sampleCount - Sets how many points on the curve should be sampled. This option directly affects how many trignales are rendered.\n";
     }
 
     #endregion
@@ -25,6 +26,10 @@ namespace Scene3D
 
     // Instance data.
     private Lissajous lissajous;
+    float freqX;
+    float freqY;
+    float freqZ;
+    int sampleCount;
 
     #endregion
 
@@ -80,6 +85,12 @@ namespace Scene3D
         }
       }
       */
+
+
+      Dictionary<string, string> splitParams = Util.ParseKeyValueList(param);
+      Util.TryParse(splitParams, "xfreq", ref freqX);
+      Util.TryParse(splitParams, "yfreq", ref freqY);
+      Util.TryParse(splitParams, "zfreq", ref freqZ);
     }
 
     #endregion
@@ -98,20 +109,46 @@ namespace Scene3D
       parseParams(param);
       scene.Reserve(10000000);
 
+      lissajous = new Lissajous(freqX, freqY, freqZ, sampleCount);
+      lissajous.Construct(scene, m);
+
       return 0;
     }
 
     class Lissajous
     {
-      public Lissajous()
+      public Lissajous(float freqX, float freqY, float freqZ, int sampleCount)
       {
-
+        this.freqX = freqX;
+        this.freqY = freqY;
+        this.freqZ = freqZ;
+        this.amplitude = 1.0f;
+        this.vertCount = 200;
       }
 
       public void Construct (SceneBrep scene, Matrix4 m)
       {
 
+        for (int i = 0; i < vertCount; i++)
+        {
+          float currentPos = (2 * (float)Math.PI * i) / vertCount;
+
+          float posX = (float)Math.Sin(freqX * currentPos);
+          float posY = (float)Math.Sin(freqY * currentPos);
+          float posZ = (float)Math.Sin(freqZ * currentPos);
+
+          scene.AddVertex(new Vector3(posX, posY, posZ));
+        }
+
+        for (int i = 0; i < vertCount - 1; ++i)
+        {
+          scene.AddLine(i, i + 1);
+        }
       }
+
+      float freqX, freqY, freqZ;
+      float amplitude;
+      int vertCount;
     }
 
     #endregion
