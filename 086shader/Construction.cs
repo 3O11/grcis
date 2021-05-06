@@ -91,6 +91,7 @@ namespace Scene3D
       Util.TryParse(splitParams, "xfreq", ref freqX);
       Util.TryParse(splitParams, "yfreq", ref freqY);
       Util.TryParse(splitParams, "zfreq", ref freqZ);
+      Util.TryParse(splitParams, "sampleCount", ref sampleCount);
     }
 
     #endregion
@@ -123,15 +124,20 @@ namespace Scene3D
         this.freqY = freqY;
         this.freqZ = freqZ;
         this.amplitude = 1.0f;
-        this.vertCount = 200;
+        this.sampleCount = sampleCount;
       }
 
-      public void Construct (SceneBrep scene, Matrix4 m)
+      public void Construct(SceneBrep scene, Matrix4 m)
+      {
+        
+      }
+
+      public void TrivialConstruct (SceneBrep scene, Matrix4 m)
       {
 
-        for (int i = 0; i < vertCount; i++)
+        for (int i = 0; i < sampleCount; i++)
         {
-          float currentPos = (2 * (float)Math.PI * i) / vertCount;
+          float currentPos = (2 * (float)Math.PI * i) / sampleCount;
 
           float posX = (float)Math.Sin(freqX * currentPos);
           float posY = (float)Math.Sin(freqY * currentPos);
@@ -140,15 +146,55 @@ namespace Scene3D
           scene.AddVertex(new Vector3(posX, posY, posZ));
         }
 
-        for (int i = 0; i < vertCount - 1; ++i)
+        for (int i = 0; i < sampleCount - 1; ++i)
         {
           scene.AddLine(i, i + 1);
         }
       }
 
+      float FindFuncPeriod()
+      {
+
+        return (float)(2 * Math.PI);
+      }
+
       float freqX, freqY, freqZ;
       float amplitude;
-      int vertCount;
+      int sampleCount;
+    }
+
+    class Vector
+    {
+      public Vector(float x, float y, float z)
+      {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+      }
+
+      public void Transform(Matrix4 m)
+      {
+
+      }
+
+      public void RotateX(float angle)
+      {
+
+      }
+
+      public void RotateY (float angle)
+      {
+
+      }
+
+      public void RotateZ (float angle)
+      {
+
+      }
+
+      public float x { private set; get; }
+      public float y { private set; get; }
+      public float z { private set; get; }
     }
 
     #endregion
