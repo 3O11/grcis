@@ -1,7 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using System;
+using System.Windows.Forms;
 
 namespace MathSupport
 {
@@ -320,7 +320,7 @@ namespace MathSupport
     /// <param name="near">Near frustum distance if applicable.</param>
     /// <param name="far">Far frustum distance if applicable.</param>
     public virtual void GLsetupViewport (int width, int height, float near = 0.01f, float far = 1000.0f)
-    {}
+    { }
 
     /// <summary>
     /// Gets a current model-view transformation matrix.
@@ -435,7 +435,7 @@ namespace MathSupport
 
       // Sphere constructor
       public Ellipse (float r, Vector3 center) : this(r, r, r, center)
-      {}
+      { }
 
       // Ellipse constructor
       public Ellipse (float a, float b, float c, Vector3 center)
@@ -554,9 +554,9 @@ namespace MathSupport
         float aspect = width / (float)height;
 
         //perspectiveProjection = new Matrix4(focalLength, 0, 0, 0, 0, focalLength / ratio, 0, 0, 0, 0, -1, -2 * near, 0, 0, -1, 0);
-        perspectiveProjection = new Matrix4(f / aspect, 0.0f,  0.0f,        0.0f,
-                                                  0.0f,   f,   0.0f,        0.0f,
-                                                  0.0f, 0.0f, -1.0f,       -1.0f,
+        perspectiveProjection = new Matrix4(f / aspect, 0.0f, 0.0f, 0.0f,
+                                                  0.0f, f, 0.0f, 0.0f,
+                                                  0.0f, 0.0f, -1.0f, -1.0f,
                                                   0.0f, 0.0f, -2.0f * near, 0.0f);
       }
       else
@@ -653,7 +653,7 @@ namespace MathSupport
 
     private void setEllipse (int width, int height)
     {
-      width  /= 2;
+      width /= 2;
       height /= 2;
 
       ellipse = new Ellipse(Math.Min(width, height), new Vector3(width, height, 0));

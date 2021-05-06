@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
 using MathSupport;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using System;
+using System.Collections.Generic;
 using Utilities;
 
 namespace _086shader
@@ -19,8 +19,8 @@ namespace _086shader
     {
       // {{
 
-      name    = "Josef Pelikán";
-      param   = "period=10.0, rad=2.0";
+      name = "Josef Pelikán";
+      param = "period=10.0, rad=2.0";
       tooltip = "period=<cam period in seconds>, rad=<cam radius in scene diameters>";
 
       // }}

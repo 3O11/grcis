@@ -1,8 +1,8 @@
-﻿using System;
+﻿using OpenTK;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using OpenTK;
 
 namespace Scene3D
 {
@@ -96,11 +96,16 @@ namespace Scene3D
     {
       SceneBrep tmp = new SceneBrep();
       tmp.geometry = new List<Vector3>(geometry);
-      if (normals != null)     tmp.normals = new List<Vector3>(normals);
-      if (colors != null)      tmp.colors = new List<Vector3>(colors);
-      if (txtCoords != null)   tmp.txtCoords = new List<Vector2>(txtCoords);
-      if (vertexPtr != null)   tmp.vertexPtr = new List<int>(vertexPtr);
-      if (oppositePtr != null) tmp.oppositePtr = new List<int>(oppositePtr);
+      if (normals != null)
+        tmp.normals = new List<Vector3>(normals);
+      if (colors != null)
+        tmp.colors = new List<Vector3>(colors);
+      if (txtCoords != null)
+        tmp.txtCoords = new List<Vector2>(txtCoords);
+      if (vertexPtr != null)
+        tmp.vertexPtr = new List<int>(vertexPtr);
+      if (oppositePtr != null)
+        tmp.oppositePtr = new List<int>(oppositePtr);
       tmp.lines = lines;
       tmp.LineWidth = LineWidth;
 
@@ -115,14 +120,14 @@ namespace Scene3D
     /// </summary>
     public void Reset ()
     {
-      geometry    = new List<Vector3>(256);
-      normals     = null;
-      colors      = null;
-      txtCoords   = null;
-      vertexPtr   = new List<int>(256);
+      geometry = new List<Vector3>(256);
+      normals = null;
+      colors = null;
+      txtCoords = null;
+      vertexPtr = new List<int>(256);
       oppositePtr = null;
-      lines       = false;
-      LineWidth   = 2.0f;
+      lines = false;
+      LineWidth = 2.0f;
     }
 
     /// <summary>
@@ -136,13 +141,17 @@ namespace Scene3D
 
       int newReserve = geometry.Count + additionalVertices;
       geometry.Capacity = newReserve;
-      if (normals != null)   normals.Capacity = newReserve;
-      if (colors != null)    colors.Capacity = newReserve;
-      if (txtCoords != null) txtCoords.Capacity = newReserve;
+      if (normals != null)
+        normals.Capacity = newReserve;
+      if (colors != null)
+        colors.Capacity = newReserve;
+      if (txtCoords != null)
+        txtCoords.Capacity = newReserve;
 
       newReserve = vertexPtr.Count + additionalVertices * 3;
       vertexPtr.Capacity = newReserve;
-      if (oppositePtr != null) oppositePtr.Capacity = newReserve;
+      if (oppositePtr != null)
+        oppositePtr.Capacity = newReserve;
     }
 
     /// <summary>
@@ -509,7 +518,7 @@ namespace Scene3D
                    geometry.Count > v2 &&
                    geometry.Count > v3, "Invalid vertex handle");
 
-      vertexPtr[tr]     = v1;
+      vertexPtr[tr] = v1;
       vertexPtr[tr + 1] = v2;
       vertexPtr[tr + 2] = v3;
     }
@@ -571,26 +580,44 @@ namespace Scene3D
       Vector3 a, b, c;
       GetTriangleVertices(tr, out a, out b, out c);
 
-      if (a.X < min.X) min.X = a.X;
-      if (a.X > max.X) max.X = a.X;
-      if (a.Y < min.Y) min.Y = a.Y;
-      if (a.Y > max.Y) max.Y = a.Y;
-      if (a.Z < min.Z) min.Z = a.Z;
-      if (a.Z > max.Z) max.Z = a.Z;
+      if (a.X < min.X)
+        min.X = a.X;
+      if (a.X > max.X)
+        max.X = a.X;
+      if (a.Y < min.Y)
+        min.Y = a.Y;
+      if (a.Y > max.Y)
+        max.Y = a.Y;
+      if (a.Z < min.Z)
+        min.Z = a.Z;
+      if (a.Z > max.Z)
+        max.Z = a.Z;
 
-      if (b.X < min.X) min.X = b.X;
-      if (b.X > max.X) max.X = b.X;
-      if (b.Y < min.Y) min.Y = b.Y;
-      if (b.Y > max.Y) max.Y = b.Y;
-      if (b.Z < min.Z) min.Z = b.Z;
-      if (b.Z > max.Z) max.Z = b.Z;
+      if (b.X < min.X)
+        min.X = b.X;
+      if (b.X > max.X)
+        max.X = b.X;
+      if (b.Y < min.Y)
+        min.Y = b.Y;
+      if (b.Y > max.Y)
+        max.Y = b.Y;
+      if (b.Z < min.Z)
+        min.Z = b.Z;
+      if (b.Z > max.Z)
+        max.Z = b.Z;
 
-      if (c.X < min.X) min.X = c.X;
-      if (c.X > max.X) max.X = c.X;
-      if (c.Y < min.Y) min.Y = c.Y;
-      if (c.Y > max.Y) max.Y = c.Y;
-      if (c.Z < min.Z) min.Z = c.Z;
-      if (c.Z > max.Z) max.Z = c.Z;
+      if (c.X < min.X)
+        min.X = c.X;
+      if (c.X > max.X)
+        max.X = c.X;
+      if (c.Y < min.Y)
+        min.Y = c.Y;
+      if (c.Y > max.Y)
+        max.Y = c.Y;
+      if (c.Z < min.Z)
+        min.Z = c.Z;
+      if (c.Z > max.Z)
+        max.Z = c.Z;
     }
 
     /// <summary>
@@ -721,12 +748,18 @@ namespace Scene3D
         cx += vi.X;
         cy += vi.Y;
         cz += vi.Z;
-        if (vi.X < minx) minx = vi.X;
-        if (vi.Y < miny) miny = vi.Y;
-        if (vi.Z < minz) minz = vi.Z;
-        if (vi.X > maxx) maxx = vi.X;
-        if (vi.Y > maxy) maxy = vi.Y;
-        if (vi.Z > maxz) maxz = vi.Z;
+        if (vi.X < minx)
+          minx = vi.X;
+        if (vi.Y < miny)
+          miny = vi.Y;
+        if (vi.Z < minz)
+          minz = vi.Z;
+        if (vi.X > maxx)
+          maxx = vi.X;
+        if (vi.Y > maxy)
+          maxy = vi.Y;
+        if (vi.Z > maxz)
+          maxz = vi.Z;
       }
 
       center = new Vector3((float)(cx / Vertices),
@@ -797,7 +830,7 @@ namespace Scene3D
     /// </summary>
     public void BuildCornerTable ()
     {
-      if (geometry  == null || geometry.Count  < 1 ||
+      if (geometry == null || geometry.Count < 1 ||
           vertexPtr == null || vertexPtr.Count < 1)
       {
         Reset();

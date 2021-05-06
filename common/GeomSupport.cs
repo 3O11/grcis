@@ -1,5 +1,5 @@
-﻿using System;
-using OpenTK;
+﻿using OpenTK;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 
@@ -70,23 +70,23 @@ namespace MathSupport
       {
         // ax, ay are dominant
         p1.X = -p.Y;
-        p1.Y =  p.X;
-        p1.Z =  0.0;
+        p1.Y = p.X;
+        p1.Z = 0.0;
       }
       else if (ax >= ay &&
                az >= ay)
       {
         // ax, az are dominant
         p1.X = -p.Z;
-        p1.Y =  0.0;
-        p1.Z =  p.X;
+        p1.Y = 0.0;
+        p1.Z = p.X;
       }
       else
       {
         // ay, az are dominant
-        p1.X =  0.0;
+        p1.X = 0.0;
         p1.Y = -p.Z;
-        p1.Z =  p.Y;
+        p1.Z = p.Y;
       }
 
       Vector3d.Cross(ref p, ref p1, out p2);
@@ -120,7 +120,7 @@ namespace MathSupport
         // Vector perpendicular to p, aiming "to the North"
         tu = new Vector3d(-p.Z * p.X, -p.Z * p.Y, p.X * p.X + p.Y * p.Y);
         // Vector aiming "to the East"
-        tv = new Vector3d(       p.Y,       -p.X,                   0.0);
+        tv = new Vector3d(p.Y, -p.X, 0.0);
       }
     }
 
@@ -465,7 +465,7 @@ namespace MathSupport
       Vector4.Transform(ref vec, ref projInv, out vec);
       Vector4.Transform(ref vec, ref viewInv, out vec);
 
-      if (vec.W >  float.Epsilon ||
+      if (vec.W > float.Epsilon ||
           vec.W < -float.Epsilon)
       {
         vec.X /= vec.W;
@@ -511,13 +511,17 @@ namespace MathSupport
 
         if (mul > 0.0)
         {
-          if (t1 > tMin) tMin = t1;
-          if (t2 < tMax) tMax = t2;
+          if (t1 > tMin)
+            tMin = t1;
+          if (t2 < tMax)
+            tMax = t2;
         }
         else
         {
-          if (t2 > tMin) tMin = t2;
-          if (t1 < tMax) tMax = t1;
+          if (t2 > tMin)
+            tMin = t2;
+          if (t1 < tMax)
+            tMax = t1;
         }
 
         if (tMin > tMax)
@@ -539,13 +543,17 @@ namespace MathSupport
 
         if (mul > 0.0)
         {
-          if (t1 > tMin) tMin = t1;
-          if (t2 < tMax) tMax = t2;
+          if (t1 > tMin)
+            tMin = t1;
+          if (t2 < tMax)
+            tMax = t2;
         }
         else
         {
-          if (t2 > tMin) tMin = t2;
-          if (t1 < tMax) tMax = t1;
+          if (t2 > tMin)
+            tMin = t2;
+          if (t1 < tMax)
+            tMax = t1;
         }
 
         if (tMin > tMax)
@@ -567,13 +575,17 @@ namespace MathSupport
 
         if (mul > 0.0)
         {
-          if (t1 > tMin) tMin = t1;
-          if (t2 < tMax) tMax = t2;
+          if (t1 > tMin)
+            tMin = t1;
+          if (t2 < tMax)
+            tMax = t2;
         }
         else
         {
-          if (t2 > tMin) tMin = t2;
-          if (t1 < tMax) tMax = t1;
+          if (t2 > tMin)
+            tMin = t2;
+          if (t1 < tMax)
+            tMax = t1;
         }
 
         if (tMin > tMax)
@@ -618,13 +630,17 @@ namespace MathSupport
 
         if (p1inv.X > 0.0)
         {
-          if (t1 > tMin) tMin = t1;
-          if (t2 < tMax) tMax = t2;
+          if (t1 > tMin)
+            tMin = t1;
+          if (t2 < tMax)
+            tMax = t2;
         }
         else
         {
-          if (t2 > tMin) tMin = t2;
-          if (t1 < tMax) tMax = t1;
+          if (t2 > tMin)
+            tMin = t2;
+          if (t1 < tMax)
+            tMax = t1;
         }
 
         if (tMin > tMax)
@@ -645,13 +661,17 @@ namespace MathSupport
 
         if (p1inv.Y > 0.0)
         {
-          if (t1 > tMin) tMin = t1;
-          if (t2 < tMax) tMax = t2;
+          if (t1 > tMin)
+            tMin = t1;
+          if (t2 < tMax)
+            tMax = t2;
         }
         else
         {
-          if (t2 > tMin) tMin = t2;
-          if (t1 < tMax) tMax = t1;
+          if (t2 > tMin)
+            tMin = t2;
+          if (t1 < tMax)
+            tMax = t1;
         }
 
         if (tMin > tMax)
@@ -672,13 +692,17 @@ namespace MathSupport
 
         if (p1inv.Z > 0.0)
         {
-          if (t1 > tMin) tMin = t1;
-          if (t2 < tMax) tMax = t2;
+          if (t1 > tMin)
+            tMin = t1;
+          if (t2 < tMax)
+            tMax = t2;
         }
         else
         {
-          if (t2 > tMin) tMin = t2;
-          if (t1 < tMax) tMax = t1;
+          if (t2 > tMin)
+            tMin = t2;
+          if (t1 < tMax)
+            tMax = t1;
         }
 
         if (tMin > tMax)
@@ -723,13 +747,17 @@ namespace MathSupport
 
         if (p1inv.X > 0.0)
         {
-          if (t1 > tMin) tMin = t1;
-          if (t2 < tMax) tMax = t2;
+          if (t1 > tMin)
+            tMin = t1;
+          if (t2 < tMax)
+            tMax = t2;
         }
         else
         {
-          if (t2 > tMin) tMin = t2;
-          if (t1 < tMax) tMax = t1;
+          if (t2 > tMin)
+            tMin = t2;
+          if (t1 < tMax)
+            tMax = t1;
         }
 
         if (tMin > tMax)
@@ -750,13 +778,17 @@ namespace MathSupport
 
         if (p1inv.Y > 0.0)
         {
-          if (t1 > tMin) tMin = t1;
-          if (t2 < tMax) tMax = t2;
+          if (t1 > tMin)
+            tMin = t1;
+          if (t2 < tMax)
+            tMax = t2;
         }
         else
         {
-          if (t2 > tMin) tMin = t2;
-          if (t1 < tMax) tMax = t1;
+          if (t2 > tMin)
+            tMin = t2;
+          if (t1 < tMax)
+            tMax = t1;
         }
 
         if (tMin > tMax)
@@ -777,13 +809,17 @@ namespace MathSupport
 
         if (p1inv.Z > 0.0)
         {
-          if (t1 > tMin) tMin = t1;
-          if (t2 < tMax) tMax = t2;
+          if (t1 > tMin)
+            tMin = t1;
+          if (t2 < tMax)
+            tMax = t2;
         }
         else
         {
-          if (t2 > tMin) tMin = t2;
-          if (t1 < tMax) tMax = t1;
+          if (t2 > tMin)
+            tMin = t2;
+          if (t1 < tMax)
+            tMax = t1;
         }
 
         if (tMin > tMax)

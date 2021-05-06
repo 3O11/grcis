@@ -1,13 +1,13 @@
 ﻿#define USE_INVALIDATE
 
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Globalization;
 using MathSupport;
 using OpenglSupport;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Globalization;
 using Utilities;
 
 namespace _086shader

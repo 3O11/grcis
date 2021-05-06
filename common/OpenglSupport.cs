@@ -1,11 +1,11 @@
-﻿using System;
+﻿using OpenTK;
+using OpenTK.Graphics;
+using OpenTK.Graphics.OpenGL;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Threading;
-using OpenTK;
-using OpenTK.Graphics;
-using OpenTK.Graphics.OpenGL;
 using Utilities;
 
 namespace OpenglSupport
@@ -91,7 +91,7 @@ namespace OpenglSupport
     /// </summary>
     public static void ResetFrameNumber ()
     {
-      lock ( frameLock )
+      lock (frameLock)
         frameCounter = 0;
     }
 
@@ -185,8 +185,8 @@ namespace OpenglSupport
       get
       {
         int size = 0;
-        lock ( this )
-          if ( queue != null )
+        lock (this)
+          if (queue != null)
             size = queue.Count;
         return size;
       }
@@ -364,10 +364,10 @@ namespace OpenglSupport
 
     public GlShaderInfo (ShaderType st, string source, string hint = null)
     {
-      type       = st;
+      type = st;
       sourceFile = source;
-      hintDir    = hint;
-      shader     = null;
+      hintDir = hint;
+      shader = null;
     }
 
     public bool Compile ()
@@ -411,7 +411,7 @@ namespace OpenglSupport
 
     public GlProgramInfo (string _name, IEnumerable<GlShaderInfo> si = null)
     {
-      name    = _name;
+      name = _name;
       program = null;
       shaders = (si == null) ? new List<GlShaderInfo>() : new List<GlShaderInfo>(si);
     }
@@ -472,7 +472,7 @@ namespace OpenglSupport
   /// <summary>
   /// GLSL shader object.
   /// </summary>
-  public class GlShader: IDisposable
+  public class GlShader : IDisposable
   {
     /// <summary>
     /// Global repository of active shaders.
@@ -543,7 +543,7 @@ namespace OpenglSupport
       string fn = Util.FindSourceFile ( fileName, folderHint );
       if (fn == null)
       {
-        Status  = 0;
+        Status = 0;
         Message = "Shader file '" + fileName + "' not found.";
         return false;
       }
@@ -572,7 +572,7 @@ namespace OpenglSupport
     public ActiveAttribType Type;
   }
 
-  public class GlProgram: IDisposable
+  public class GlProgram : IDisposable
   {
     /// <summary>
     /// All attached shaders by their type.
@@ -611,7 +611,7 @@ namespace OpenglSupport
     public GlProgram (string name = "default")
     {
       Name = name;
-      Id   = GL.CreateProgram();
+      Id = GL.CreateProgram();
     }
 
     public void Dispose ()
@@ -632,7 +632,7 @@ namespace OpenglSupport
           shader.Id < 0)
       {
         Message = "AttachShader: invalid program or shader.";
-        Status  = 0;
+        Status = 0;
         return false;
       }
 
@@ -647,7 +647,7 @@ namespace OpenglSupport
       GL.AttachShader(Id, shader.Id);
 
       // ??? How to test if everything went well ???
-      Status  = 1;
+      Status = 1;
       Message = GL.GetProgramInfoLog(Id);
 
       shaders[shader.Type] = shader;
@@ -660,7 +660,7 @@ namespace OpenglSupport
       if (Id < 0)
       {
         Message = "Link: invalid program.";
-        Status  = 0;
+        Status = 0;
         return false;
       }
 
@@ -1166,7 +1166,7 @@ namespace OpenglSupport
       colorX = colX;
       colorY = colY;
       colorZ = colZ;
-      tick   = t;
+      tick = t;
       ticksX = Math.Max(tX, 1);
       ticksY = Math.Max(tY, 1);
       ticksZ = Math.Max(tZ, 1);
@@ -1183,7 +1183,7 @@ namespace OpenglSupport
           new Vector3(0.0f, 0.8f, 0.2f),
           new Vector3(0.2f, 0.4f, 1.0f),
           t, tX, tY, tZ)
-    {}
+    { }
 
     //--- rendering ---
 

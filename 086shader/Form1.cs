@@ -1,3 +1,7 @@
+using MathSupport;
+using OpenTK;
+using OpenTK.Graphics.OpenGL;
+using Scene3D;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,10 +10,6 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
-using MathSupport;
-using OpenTK;
-using OpenTK.Graphics.OpenGL;
-using Scene3D;
 using Utilities;
 
 namespace _086shader
@@ -212,11 +212,11 @@ namespace _086shader
 
       // Viewport update.
       UpdateParams(textParam.Text);
-      tb.Center   = center;
+      tb.Center = center;
       tb.Diameter = diameter;
       tb.Reset();
 
-      camera.Center   = center;
+      camera.Center = center;
       camera.Diameter = diameter;
       camera.Reset();
 
@@ -322,11 +322,11 @@ namespace _086shader
 
       // Viewport update.
       UpdateParams(textParam.Text);
-      tb.Center   = center;
+      tb.Center = center;
       tb.Diameter = diameter;
       tb.Reset();
 
-      camera.Center   = center;
+      camera.Center = center;
       camera.Diameter = diameter;
       camera.Reset();
 
@@ -511,7 +511,7 @@ namespace _086shader
 
     private void buttonReset_Click (object sender, EventArgs e)
     {
-      cam.Center   = center;
+      cam.Center = center;
       cam.Diameter = diameter;
       cam.Reset();
       cam.Update(textParam.Text, cameraDefinition);
@@ -543,7 +543,7 @@ namespace _086shader
 
       cam = checkAnimation.Checked ? camera : tb;
 
-      cam.Center   = center;
+      cam.Center = center;
       cam.Diameter = diameter;
       cam.Reset();
       cam.Update(textParam.Text, cameraDefinition);

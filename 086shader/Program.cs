@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace _086shader
@@ -14,8 +12,8 @@ namespace _086shader
     static void Main ()
     {
       Application.EnableVisualStyles();
-      Application.SetCompatibleTextRenderingDefault( false );
-      Application.Run( new Form1() );
+      Application.SetCompatibleTextRenderingDefault(false);
+      Application.Run(new Form1());
     }
   }
 }

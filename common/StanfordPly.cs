@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using OpenTK;
+using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Text;
-using OpenTK;
 
 namespace Scene3D
 {
@@ -92,12 +91,12 @@ namespace Scene3D
 
     public StanfordPly ()
     {
-      Orientation   = false;
-      TextFormat    = true;
+      Orientation = false;
+      TextFormat = true;
       NativeNewLine = true;
-      DoNormals     = true;
-      DoTxtCoords   = true;
-      DoColors      = true;
+      DoNormals = true;
+      DoTxtCoords = true;
+      DoColors = true;
     }
 
     #endregion
@@ -111,17 +110,17 @@ namespace Scene3D
     /// <param name="fileName">File-name (ending by .gz for gzipped file)</param>
     /// <param name="scene">Scene to be modified</param>
     /// <returns>Number of faces read</returns>
-    public int ReadBrep ( string fileName, SceneBrep scene )
+    public int ReadBrep (string fileName, SceneBrep scene)
     {
-      if ( fileName == null ||
-           fileName.Length == 0 )
+      if (fileName == null ||
+           fileName.Length == 0)
         return SceneBrep.NULL;
 
       StreamReader reader;
-      if ( fileName.EndsWith( ".gz" ) )
-        reader = new StreamReader( new GZipStream( new FileStream( fileName, FileMode.Open ), CompressionMode.Decompress ) );
+      if (fileName.EndsWith(".gz"))
+        reader = new StreamReader(new GZipStream(new FileStream(fileName, FileMode.Open), CompressionMode.Decompress));
       else
-        reader = new StreamReader( new FileStream( fileName, FileMode.Open ) );
+        reader = new StreamReader(new FileStream(fileName, FileMode.Open));
       int faces = ReadBrep( reader, scene );
       reader.Close();
 
@@ -134,14 +133,14 @@ namespace Scene3D
     /// <param name="reader">Already open text reader</param>
     /// <param name="scene">Scene to be modified</param>
     /// <returns>Number of faces read</returns>
-    public int ReadBrep ( StreamReader reader, SceneBrep scene )
+    public int ReadBrep (StreamReader reader, SceneBrep scene)
     {
-      if ( reader == null )
+      if (reader == null)
         return SceneBrep.NULL;
 
-      Debug.Assert( scene != null );
+      Debug.Assert(scene != null);
       scene.Reset();
-      return ReadBrep( reader, scene, Matrix4.Identity );
+      return ReadBrep(reader, scene, Matrix4.Identity);
     }
 
     /// <summary>
@@ -151,12 +150,12 @@ namespace Scene3D
     /// <param name="scene">Scene to be modified</param>
     /// <param name="scene">Matrix for instancing</param>
     /// <returns>Number of faces read</returns>
-    public int ReadBrep ( StreamReader reader, SceneBrep scene, Matrix4 m )
+    public int ReadBrep (StreamReader reader, SceneBrep scene, Matrix4 m)
     {
-      if ( reader == null )
+      if (reader == null)
         return SceneBrep.NULL;
 
-      Debug.Assert( scene != null );
+      Debug.Assert(scene != null);
       int v0 = scene.Vertices;
       int lastVertex = v0 - 1;
 
@@ -304,89 +303,89 @@ namespace Scene3D
     /// </summary>
     /// <param name="writer">Already open text writer</param>
     /// <param name="scene">Scene to write</param>
-    public void WriteBrep ( StreamWriter writer, SceneBrep scene )
+    public void WriteBrep (StreamWriter writer, SceneBrep scene)
     {
-      if ( scene == null ||
-           scene.Triangles < 1 )
+      if (scene == null ||
+           scene.Triangles < 1)
         return;
 
-      Debug.Assert( TextFormat );
-      if ( !NativeNewLine )
+      Debug.Assert(TextFormat);
+      if (!NativeNewLine)
         writer.NewLine = "\r";     // CR only
 
       bool writeNormals   = DoNormals   && scene.HasNormals();
       bool writeTxtCoords = DoTxtCoords && scene.HasTxtCoords();
       bool writeColors    = DoColors    && scene.HasColors();
 
-      writer.WriteLine( HEADER );
-      writer.WriteLine( FORMAT_TEXT );
+      writer.WriteLine(HEADER);
+      writer.WriteLine(FORMAT_TEXT);
 
       // vertex-header:
-      writer.WriteLine( "{0} {1} {2}", ELEMENT, VERTEX, scene.Vertices );
-      writer.WriteLine( "{0} float x", PROPERTY );
-      writer.WriteLine( "{0} float {1}", PROPERTY, Orientation ? 'z' : 'y' );
-      writer.WriteLine( "{0} float {1}", PROPERTY, Orientation ? 'y' : 'z' );
-      if ( writeNormals )
+      writer.WriteLine("{0} {1} {2}", ELEMENT, VERTEX, scene.Vertices);
+      writer.WriteLine("{0} float x", PROPERTY);
+      writer.WriteLine("{0} float {1}", PROPERTY, Orientation ? 'z' : 'y');
+      writer.WriteLine("{0} float {1}", PROPERTY, Orientation ? 'y' : 'z');
+      if (writeNormals)
       {
-        writer.WriteLine( "{0} float {1}", PROPERTY, NORMAL_X );
-        writer.WriteLine( "{0} float {1}", PROPERTY, Orientation ? NORMAL_Z : NORMAL_Y );
-        writer.WriteLine( "{0} float {1}", PROPERTY, Orientation ? NORMAL_Y : NORMAL_Z );
+        writer.WriteLine("{0} float {1}", PROPERTY, NORMAL_X);
+        writer.WriteLine("{0} float {1}", PROPERTY, Orientation ? NORMAL_Z : NORMAL_Y);
+        writer.WriteLine("{0} float {1}", PROPERTY, Orientation ? NORMAL_Y : NORMAL_Z);
       }
-      if ( writeTxtCoords )
+      if (writeTxtCoords)
       {
-        writer.WriteLine( "{0} float {1}", PROPERTY, TEXTURE_S );
-        writer.WriteLine( "{0} float {1}", PROPERTY, TEXTURE_T );
+        writer.WriteLine("{0} float {1}", PROPERTY, TEXTURE_S);
+        writer.WriteLine("{0} float {1}", PROPERTY, TEXTURE_T);
       }
-      if ( writeColors )
+      if (writeColors)
       {
-        writer.WriteLine( "{0} float {1}", PROPERTY, COLOR_R );
-        writer.WriteLine( "{0} float {1}", PROPERTY, COLOR_G );
-        writer.WriteLine( "{0} float {1}", PROPERTY, COLOR_B );
+        writer.WriteLine("{0} float {1}", PROPERTY, COLOR_R);
+        writer.WriteLine("{0} float {1}", PROPERTY, COLOR_G);
+        writer.WriteLine("{0} float {1}", PROPERTY, COLOR_B);
       }
 
       // face-header:
-      writer.WriteLine( "{0} {1} {2}", ELEMENT, FACE, scene.Triangles );
-      writer.WriteLine( "{0} list uchar int vertex_indices", PROPERTY );
+      writer.WriteLine("{0} {1} {2}", ELEMENT, FACE, scene.Triangles);
+      writer.WriteLine("{0} list uchar int vertex_indices", PROPERTY);
 
-      writer.WriteLine( END_HEADER );
+      writer.WriteLine(END_HEADER);
 
       // vertex-data:
       int i;
       Vector3 v3;
       Vector2 v2;
       StringBuilder sb = new StringBuilder();
-      for ( i = 0; i < scene.Vertices; i++ )
+      for (i = 0; i < scene.Vertices; i++)
       {
-        v3 = scene.GetVertex( i );
+        v3 = scene.GetVertex(i);
         sb.Clear();
-        sb.AppendFormat( CultureInfo.InvariantCulture, "{0} {1} {2}", v3.X, v3.Y, v3.Z );
-        if ( writeNormals )
+        sb.AppendFormat(CultureInfo.InvariantCulture, "{0} {1} {2}", v3.X, v3.Y, v3.Z);
+        if (writeNormals)
         {
-          v3 = scene.GetNormal( i );
-          sb.AppendFormat( CultureInfo.InvariantCulture, " {0} {1} {2}", v3.X, v3.Y, v3.Z );
+          v3 = scene.GetNormal(i);
+          sb.AppendFormat(CultureInfo.InvariantCulture, " {0} {1} {2}", v3.X, v3.Y, v3.Z);
         }
-        if ( writeTxtCoords )
+        if (writeTxtCoords)
         {
-          v2 = scene.GetTxtCoord( i );
-          sb.AppendFormat( CultureInfo.InvariantCulture, " {0} {1}", v2.X, v2.Y );
+          v2 = scene.GetTxtCoord(i);
+          sb.AppendFormat(CultureInfo.InvariantCulture, " {0} {1}", v2.X, v2.Y);
         }
-        if ( writeColors )
+        if (writeColors)
         {
-          v3 = scene.GetColor( i );
-          sb.AppendFormat( CultureInfo.InvariantCulture, " {0} {1} {2}", v3.X, v3.Y, v3.Z );
+          v3 = scene.GetColor(i);
+          sb.AppendFormat(CultureInfo.InvariantCulture, " {0} {1} {2}", v3.X, v3.Y, v3.Z);
         }
-        writer.WriteLine( sb.ToString() );
+        writer.WriteLine(sb.ToString());
       }
 
       // face-data:
       int A, B, C;
-      for ( i = 0; i < scene.Triangles; i++ )
+      for (i = 0; i < scene.Triangles; i++)
       {
-        scene.GetTriangleVertices( i, out A, out B, out C );
-        writer.WriteLine( "3 {0} {1} {2}", A, Orientation ? C : B, Orientation ? B : C );
+        scene.GetTriangleVertices(i, out A, out B, out C);
+        writer.WriteLine("3 {0} {1} {2}", A, Orientation ? C : B, Orientation ? B : C);
       }
     }
 
-#endregion
+    #endregion
   }
 }
