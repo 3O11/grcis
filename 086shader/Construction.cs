@@ -16,10 +16,11 @@ namespace Scene3D
     public static void InitParams (out string name, out string param, out string tooltip)
     {
       name = "Viktor Soukup";
-      param = "xfreq=5.0,yfreq=2.0,zfreq=3.0,xoffset=0.0,sampleCount=200";
+      param = "xfreq=5.0,yfreq=2.0,zfreq=3.0,xoffset=0.0,sampleCount=2000";
       tooltip = "{x,y,z}freq - These parameters control how fast the function oscillates with respect to their axes. (Any valid float number)\n" +
         "{x,y,z}offset - These parameters control the offset of the function.\n" +
-        "sampleCount - Sets how many points on the curve should be sampled. This option directly affects how many trignales are rendered.\n";
+        "sampleCount - Sets how many points on the curve should be sampled. This option directly affects how many trignales are rendered.\n" +
+        "circleRes - Sets how many points should be on each circle. Affects vertex count and curve resolution.\n";
     }
 
     #endregion
@@ -34,6 +35,7 @@ namespace Scene3D
     float offsetY = 0.0f;
     float offsetZ = 0.0f;
     int sampleCount = 10;
+    int ppc = 16;
 
     #endregion
 
@@ -54,6 +56,7 @@ namespace Scene3D
       Util.TryParse(splitParams, "yoffset", ref offsetX);
       Util.TryParse(splitParams, "zoffset", ref offsetX);
       Util.TryParse(splitParams, "sampleCount", ref sampleCount);
+      Util.TryParse(splitParams, "circleRes", ref ppc);
     }
 
     #endregion
@@ -72,7 +75,7 @@ namespace Scene3D
       parseParams(param);
       scene.Reserve(10000000);
 
-      int pointsPerCircle = 16;
+      int pointsPerCircle = ppc;
 
       Lissajous lissajous = new Lissajous(freqX, freqY, freqZ, offsetX, offsetY, offsetZ);
       double period = lissajous.GetPeriod();
@@ -86,8 +89,7 @@ namespace Scene3D
         double position = (period * i) / sampleCount;
 
         Vector funcPos = lissajous.SampleFunc(position);
-        //Vector funcDerivative = lissajous.SampleDerivative(position);
-        Vector funcDerivative = Vector.Difference(lissajous.SampleFunc((period * (i - 1 % sampleCount)) / sampleCount), lissajous.SampleFunc((period * (i + 1 % sampleCount)) / sampleCount));
+        Vector funcDerivative = lissajous.SampleDerivative(position);
 
         vertices.Rotate(funcDerivative);
         Circle normals = new Circle(vertices);
@@ -95,13 +97,12 @@ namespace Scene3D
 
         for (int j = 0; j < pointsPerCircle; ++j)
         {
-          scene.AddVertex(vertices.Points[j].GetVec3());
-          scene.SetNormal(j + offset, normals.Points[j].GetVec3());
+          scene.AddVertex(Vector3.TransformPosition(vertices.Points[j].GetVec3(), m));
+          scene.SetNormal(j + offset, Vector3.TransformVector(normals.Points[j].GetVec3(), m));
+          scene.SetColor(j + offset, new Vector3(0.0f, 1.0f, 1.0f));
         }
         for(int j = 1; j <= pointsPerCircle && offset != 0; ++j)
         {
-          //scene.AddLine((j % pointsPerCircle) + offset, ((j - 1) % pointsPerCircle) + offset);
-
           // This is very ugly
           scene.AddTriangle((j % pointsPerCircle) + offset, ((j - 1) % pointsPerCircle) + offset, (j % pointsPerCircle) + (offset - pointsPerCircle));
           scene.AddTriangle(((j - 1) % pointsPerCircle) + offset, ((j - 1) % pointsPerCircle) + (offset - pointsPerCircle), (j % pointsPerCircle) + (offset - pointsPerCircle));
@@ -110,6 +111,7 @@ namespace Scene3D
         offset += pointsPerCircle;
       }
 
+      // One additional pass in order to connect the start to the end
       offset -= pointsPerCircle;
       for(int j = 1; j <= pointsPerCircle; ++j)
       {
@@ -155,7 +157,10 @@ namespace Scene3D
         double y = yfreq * Math.Cos(yfreq * position + yoffset);
         double z = zfreq * Math.Cos(zfreq * position + zoffset);
 
-        return new Vector(x, y, z);
+        Vector result = new Vector(x, y, z);
+        result.Normalize();
+
+        return result;
       }
 
       public double GetPeriod ()
@@ -218,7 +223,7 @@ namespace Scene3D
       public void Rotate(Vector rotation)
       {
         // Get circle normal
-        Vector normal = Vector.Cross(Points[0], Points[Points.Count / 2]);
+        Vector normal = Vector.Cross(Points[0], Points[1]);
 
         // Get the axis of rotation and angle
         Vector axis = Vector.Cross(normal, rotation);
@@ -369,6 +374,15 @@ namespace Scene3D
         return new Vector(dx, dy, dz);
       }
 
+      public static Vector Sum(Vector u, Vector v)
+      {
+        double dx = u.x + v.x;
+        double dy = u.y + v.y;
+        double dz = u.z + v.z;
+
+        return new Vector(dx, dy, dz);
+      }
+
       public static Vector Cross(Vector u, Vector v)
       {
         double cx = u.y * v.z - u.z * v.y;
@@ -442,8 +456,8 @@ namespace Scene3D
 
         Quaternion vec = new Quaternion(v);
 
-        vec = Multiply(vec, q);
-        vec = Multiply(inv_q, vec);
+        vec = Multiply(q, vec);
+        vec = Multiply(vec, inv_q);
         return new Vector(vec.i, vec.j, vec.k);
       }
 
