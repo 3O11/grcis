@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>_048rtmontecarlo</RootNamespace>
     <AssemblyName>048rtmontecarlo-script</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -263,6 +263,15 @@
     </Compile>
     <Compile Include="..\common\WorkloadDistribution.cs">
       <Link>WorkloadDistribution.cs</Link>
+    </Compile>
+    <Compile Include="..\newmodules\JosefPelikan-CatmullRomAnimator\CatmullRomAnimator.cs">
+      <Link>CatmullRomAnimator.cs</Link>
+    </Compile>
+    <Compile Include="..\newmodules\JosefPelikan-ChaoticParticles\ChaoticParticles.cs">
+      <Link>ChaoticParticles.cs</Link>
+    </Compile>
+    <Compile Include="..\newmodules\JosefPelikan-StarBackground\StarBackground.cs">
+      <Link>StarBackground.cs</Link>
     </Compile>
     <Compile Include="AdditionalViewsForm.cs">
       <SubType>Form</SubType>

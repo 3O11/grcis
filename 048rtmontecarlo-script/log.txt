@@ -1,0 +1,162 @@
+
+2021-09-05 20:01:28: .NET Framework 4.6.1 (4.0.30319.42000), OpenTK 3.0.0.0
+2021-09-05 20:01:28: OpenGL version: 4.6.0 NVIDIA 471.41, shading language: 4.60 NVIDIA
+2021-09-05 20:01:29: Vendor: NVIDIA Corporation, driver: NVIDIA GeForce RTX 3070/PCIe/SSE2
+2021-09-05 20:01:29: Max-vertices: 1048576, max-indices: 1048576, extensions: 403
+2021-09-05 20:01:29: GLSL program 'default': 3, shaders: 2
+2021-09-05 20:01:29:   VertexShader: 1
+2021-09-05 20:01:29:   FragmentShader: 2
+2021-09-05 20:01:29: Attributes[ 4 ]:
+2021-09-05 20:01:29:   color: 3, FloatVec3, 1
+2021-09-05 20:01:29:   normal: 1, FloatVec3, 1
+2021-09-05 20:01:29:   position: 0, FloatVec4, 1
+2021-09-05 20:01:29:   texCoords: 2, FloatVec2, 1
+2021-09-05 20:01:29: Uniforms[ 18 ]:
+2021-09-05 20:01:29:   Ka: 0, FloatVec3, 1
+2021-09-05 20:01:29:   Kd: 1, FloatVec3, 1
+2021-09-05 20:01:29:   Ks: 2, FloatVec3, 1
+2021-09-05 20:01:29:   eyePosition: 3, FloatVec3, 1
+2021-09-05 20:01:29:   globalAmbient: 4, FloatVec3, 1
+2021-09-05 20:01:29:   globalColor: 5, Bool, 1
+2021-09-05 20:01:29:   lightColor: 6, FloatVec3, 1
+2021-09-05 20:01:29:   lightPosition: 7, FloatVec3, 1
+2021-09-05 20:01:29:   matrixModelView: 8, FloatMat4, 1
+2021-09-05 20:01:29:   matrixProjection: 9, FloatMat4, 1
+2021-09-05 20:01:29:   shadingGouraud: 10, Bool, 1
+2021-09-05 20:01:29:   shadingPhong: 11, Bool, 1
+2021-09-05 20:01:29:   shininess: 12, Float, 1
+2021-09-05 20:01:29:   texSurface: 13, Sampler2D, 1
+2021-09-05 20:01:29:   useAmbient: 14, Bool, 1
+2021-09-05 20:01:29:   useDiffuse: 15, Bool, 1
+2021-09-05 20:01:29:   useSpecular: 16, Bool, 1
+2021-09-05 20:01:29:   useTexture: 17, Bool, 1
+
+2021-09-07 19:26:36: .NET Framework 4.6.1 (4.0.30319.42000), OpenTK 3.0.0.0
+2021-09-07 19:26:36: OpenGL version: 4.6.0 NVIDIA 471.41, shading language: 4.60 NVIDIA
+2021-09-07 19:26:36: Vendor: NVIDIA Corporation, driver: NVIDIA GeForce RTX 3070/PCIe/SSE2
+2021-09-07 19:26:36: Max-vertices: 1048576, max-indices: 1048576, extensions: 403
+2021-09-07 19:26:36: GLSL program 'default': 3, shaders: 2
+2021-09-07 19:26:36:   VertexShader: 1
+2021-09-07 19:26:36:   FragmentShader: 2
+2021-09-07 19:26:36: Attributes[ 4 ]:
+2021-09-07 19:26:36:   color: 3, FloatVec3, 1
+2021-09-07 19:26:36:   normal: 1, FloatVec3, 1
+2021-09-07 19:26:36:   position: 0, FloatVec4, 1
+2021-09-07 19:26:36:   texCoords: 2, FloatVec2, 1
+2021-09-07 19:26:36: Uniforms[ 18 ]:
+2021-09-07 19:26:36:   Ka: 0, FloatVec3, 1
+2021-09-07 19:26:36:   Kd: 1, FloatVec3, 1
+2021-09-07 19:26:36:   Ks: 2, FloatVec3, 1
+2021-09-07 19:26:36:   eyePosition: 3, FloatVec3, 1
+2021-09-07 19:26:36:   globalAmbient: 4, FloatVec3, 1
+2021-09-07 19:26:36:   globalColor: 5, Bool, 1
+2021-09-07 19:26:36:   lightColor: 6, FloatVec3, 1
+2021-09-07 19:26:36:   lightPosition: 7, FloatVec3, 1
+2021-09-07 19:26:36:   matrixModelView: 8, FloatMat4, 1
+2021-09-07 19:26:36:   matrixProjection: 9, FloatMat4, 1
+2021-09-07 19:26:36:   shadingGouraud: 10, Bool, 1
+2021-09-07 19:26:36:   shadingPhong: 11, Bool, 1
+2021-09-07 19:26:36:   shininess: 12, Float, 1
+2021-09-07 19:26:36:   texSurface: 13, Sampler2D, 1
+2021-09-07 19:26:36:   useAmbient: 14, Bool, 1
+2021-09-07 19:26:36:   useDiffuse: 15, Bool, 1
+2021-09-07 19:26:36:   useSpecular: 16, Bool, 1
+2021-09-07 19:26:36:   useTexture: 17, Bool, 1
+2021-09-07 19:27:09: .NET Framework 4.6.1 (4.0.30319.42000), OpenTK 3.0.0.0
+2021-09-07 19:27:09: OpenGL version: 4.6.0 NVIDIA 471.41, shading language: 4.60 NVIDIA
+2021-09-07 19:27:09: Vendor: NVIDIA Corporation, driver: NVIDIA GeForce RTX 3070/PCIe/SSE2
+2021-09-07 19:27:09: Max-vertices: 1048576, max-indices: 1048576, extensions: 403
+2021-09-07 19:27:09: GLSL program 'default': 3, shaders: 2
+2021-09-07 19:27:09:   VertexShader: 1
+2021-09-07 19:27:09:   FragmentShader: 2
+2021-09-07 19:27:09: Attributes[ 4 ]:
+2021-09-07 19:27:09:   color: 3, FloatVec3, 1
+2021-09-07 19:27:09:   normal: 1, FloatVec3, 1
+2021-09-07 19:27:09:   position: 0, FloatVec4, 1
+2021-09-07 19:27:09:   texCoords: 2, FloatVec2, 1
+2021-09-07 19:27:09: Uniforms[ 18 ]:
+2021-09-07 19:27:09:   Ka: 0, FloatVec3, 1
+2021-09-07 19:27:09:   Kd: 1, FloatVec3, 1
+2021-09-07 19:27:09:   Ks: 2, FloatVec3, 1
+2021-09-07 19:27:09:   eyePosition: 3, FloatVec3, 1
+2021-09-07 19:27:09:   globalAmbient: 4, FloatVec3, 1
+2021-09-07 19:27:09:   globalColor: 5, Bool, 1
+2021-09-07 19:27:09:   lightColor: 6, FloatVec3, 1
+2021-09-07 19:27:09:   lightPosition: 7, FloatVec3, 1
+2021-09-07 19:27:09:   matrixModelView: 8, FloatMat4, 1
+2021-09-07 19:27:09:   matrixProjection: 9, FloatMat4, 1
+2021-09-07 19:27:09:   shadingGouraud: 10, Bool, 1
+2021-09-07 19:27:09:   shadingPhong: 11, Bool, 1
+2021-09-07 19:27:09:   shininess: 12, Float, 1
+2021-09-07 19:27:09:   texSurface: 13, Sampler2D, 1
+2021-09-07 19:27:09:   useAmbient: 14, Bool, 1
+2021-09-07 19:27:09:   useDiffuse: 15, Bool, 1
+2021-09-07 19:27:09:   useSpecular: 16, Bool, 1
+2021-09-07 19:27:09:   useTexture: 17, Bool, 1
+2021-09-07 19:27:30: .NET Framework 4.6.1 (4.0.30319.42000), OpenTK 3.0.0.0
+2021-09-07 19:27:30: OpenGL version: 4.6.0 NVIDIA 471.41, shading language: 4.60 NVIDIA
+2021-09-07 19:27:30: Vendor: NVIDIA Corporation, driver: NVIDIA GeForce RTX 3070/PCIe/SSE2
+2021-09-07 19:27:30: Max-vertices: 1048576, max-indices: 1048576, extensions: 403
+2021-09-07 19:27:30: GLSL program 'default': 3, shaders: 2
+2021-09-07 19:27:30:   VertexShader: 1
+2021-09-07 19:27:30:   FragmentShader: 2
+2021-09-07 19:27:30: Attributes[ 4 ]:
+2021-09-07 19:27:30:   color: 3, FloatVec3, 1
+2021-09-07 19:27:30:   normal: 1, FloatVec3, 1
+2021-09-07 19:27:30:   position: 0, FloatVec4, 1
+2021-09-07 19:27:30:   texCoords: 2, FloatVec2, 1
+2021-09-07 19:27:30: Uniforms[ 18 ]:
+2021-09-07 19:27:30:   Ka: 0, FloatVec3, 1
+2021-09-07 19:27:30:   Kd: 1, FloatVec3, 1
+2021-09-07 19:27:30:   Ks: 2, FloatVec3, 1
+2021-09-07 19:27:30:   eyePosition: 3, FloatVec3, 1
+2021-09-07 19:27:30:   globalAmbient: 4, FloatVec3, 1
+2021-09-07 19:27:30:   globalColor: 5, Bool, 1
+2021-09-07 19:27:30:   lightColor: 6, FloatVec3, 1
+2021-09-07 19:27:30:   lightPosition: 7, FloatVec3, 1
+2021-09-07 19:27:30:   matrixModelView: 8, FloatMat4, 1
+2021-09-07 19:27:30:   matrixProjection: 9, FloatMat4, 1
+2021-09-07 19:27:30:   shadingGouraud: 10, Bool, 1
+2021-09-07 19:27:30:   shadingPhong: 11, Bool, 1
+2021-09-07 19:27:30:   shininess: 12, Float, 1
+2021-09-07 19:27:30:   texSurface: 13, Sampler2D, 1
+2021-09-07 19:27:30:   useAmbient: 14, Bool, 1
+2021-09-07 19:27:30:   useDiffuse: 15, Bool, 1
+2021-09-07 19:27:30:   useSpecular: 16, Bool, 1
+2021-09-07 19:27:30:   useTexture: 17, Bool, 1
+2021-09-07 19:27:38: OpenGL error InvalidValue at set-uniforms
+2021-09-07 19:28:02: OpenGL error InvalidValue at set-uniforms
+2021-09-07 19:28:33: OpenGL error InvalidValue at set-uniforms
+2021-09-07 19:29:04: OpenGL error InvalidValue at set-uniforms
+
+2021-09-11 17:03:44: .NET Framework 4.6.1 (4.0.30319.42000), OpenTK 3.0.0.0
+2021-09-11 17:03:44: OpenGL version: 4.6.0 NVIDIA 471.41, shading language: 4.60 NVIDIA
+2021-09-11 17:03:44: Vendor: NVIDIA Corporation, driver: NVIDIA GeForce RTX 3070/PCIe/SSE2
+2021-09-11 17:03:44: Max-vertices: 1048576, max-indices: 1048576, extensions: 403
+2021-09-11 17:03:44: GLSL program 'default': 3, shaders: 2
+2021-09-11 17:03:44:   VertexShader: 1
+2021-09-11 17:03:44:   FragmentShader: 2
+2021-09-11 17:03:44: Attributes[ 4 ]:
+2021-09-11 17:03:44:   color: 3, FloatVec3, 1
+2021-09-11 17:03:44:   normal: 1, FloatVec3, 1
+2021-09-11 17:03:44:   position: 0, FloatVec4, 1
+2021-09-11 17:03:44:   texCoords: 2, FloatVec2, 1
+2021-09-11 17:03:44: Uniforms[ 18 ]:
+2021-09-11 17:03:44:   Ka: 0, FloatVec3, 1
+2021-09-11 17:03:44:   Kd: 1, FloatVec3, 1
+2021-09-11 17:03:44:   Ks: 2, FloatVec3, 1
+2021-09-11 17:03:44:   eyePosition: 3, FloatVec3, 1
+2021-09-11 17:03:44:   globalAmbient: 4, FloatVec3, 1
+2021-09-11 17:03:44:   globalColor: 5, Bool, 1
+2021-09-11 17:03:44:   lightColor: 6, FloatVec3, 1
+2021-09-11 17:03:44:   lightPosition: 7, FloatVec3, 1
+2021-09-11 17:03:44:   matrixModelView: 8, FloatMat4, 1
+2021-09-11 17:03:44:   matrixProjection: 9, FloatMat4, 1
+2021-09-11 17:03:44:   shadingGouraud: 10, Bool, 1
+2021-09-11 17:03:44:   shadingPhong: 11, Bool, 1
+2021-09-11 17:03:44:   shininess: 12, Float, 1
+2021-09-11 17:03:44:   texSurface: 13, Sampler2D, 1
+2021-09-11 17:03:44:   useAmbient: 14, Bool, 1
+2021-09-11 17:03:44:   useDiffuse: 15, Bool, 1
+2021-09-11 17:03:44:   useSpecular: 16, Bool, 1
+2021-09-11 17:03:44:   useTexture: 17, Bool, 1
